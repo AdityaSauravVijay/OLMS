@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>View All Books</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #f8f8f8;
+		}
+		h1 {
+			text-align: center;
+			margin-top: 30px;
+		}
+		table {
+			margin: 30px auto;
+			border-collapse: collapse;
+			width: 80%;
+			background-color: #fff;
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+		}
+		th, td {
+			padding: 10px;
+			text-align: left;
+			border-bottom: 1px solid #ddd;
+		}
+		th {
+			background-color: #f2f2f2;
+		}
+		td:last-child {
+			text-align: center;
+		}
+		a {
+			display: inline-block;
+			padding: 10px;
+			border-radius: 5px;
+			background-color: #4285f4;
+			color: #fff;
+			text-decoration: none;
+			margin-right: 10px;
+			transition: background-color 0.2s;
+		}
+		a:hover {
+			background-color: #3075c6;
+		}
+	</style>
+</head>
+<body>
+	<h1>View All Books</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Author</th>
+				<th>ISBN</th>
+				<th>Available</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="book : ${books}">
+				<td th:text="${book.title}"></td>
+				<td th:text="${book.author}"></td>
+				<td th:text="${book.isbn}"></td>
+				<td th:text="${book.available}"></td>
+				<td>
+					<a th:href="@{/edit/{id}(id=${book.id})}">Edit</a> | 
+					<a th:href="@{/delete/{id}(id=${book.id})}">Delete</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<a th:href="@{/add}">Add Book</a>
+	<a th:href="@{/librarian-home}">Go back to home page</a>
+</body>
+</html>

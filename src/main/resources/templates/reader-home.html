@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome Reader</title>
+	<style>
+		h1 {
+			font-size: 28px;
+			font-weight: bold;
+			text-align: center;
+			margin-top: 20px;
+		}
+		a {
+			display: block;
+			margin: 20px auto;
+			width: 200px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			font-size: 20px;
+			font-weight: bold;
+			color: white;
+			background-color: #4CAF50;
+			border-radius: 5px;
+			text-decoration: none;
+		}
+		a:hover {
+			background-color: #3e8e41;
+		}
+	</style>
+</head>
+<body>
+	<h1>What do you want to do?</h1>
+	<a th:href="@{/request-book}">Go to request book page</a>
+	<br></br>
+	<a th:href="@{/return-book}">Go to return book page</a>
+	<br></br>
+	<a th:href="@{/view-issued-books}">Go to view issued books page</a>
+	<br></br>
+	<a th:href="@{/search-reader}">Go to search page</a>
+	<br></br>
+	<a th:href="@{/logout}">Go back to login page</a>
+</body>
+</html> 

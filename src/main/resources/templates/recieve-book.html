@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Receive Book</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			font-size: 16px;
+			line-height: 1.5;
+			margin: 0;
+			padding: 0;
+		}
+
+		h2 {
+			margin-top: 0;
+		}
+
+		form {
+			margin-bottom: 20px;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 10px;
+		}
+
+		select {
+			padding: 5px;
+			font-size: 16px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			width: 100%;
+			max-width: 400px;
+			margin-bottom: 20px;
+		}
+
+		input[type="submit"] {
+			background-color: #007bff;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 4px;
+			font-size: 16px;
+			cursor: pointer;
+		}
+
+		input[type="submit"]:hover {
+			background-color: #0069d9;
+		}
+
+		a {
+			color: #007bff;
+			text-decoration: none;
+			margin-right: 20px;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+	</style>
+</head>
+<body>
+	<h2>Receive Book</h2>
+	<form th:action="@{/receive-book}" method="post" th:object="${return}">
+		<div>
+			<label for="borrow">Select Book to Return:</label>
+				<select id="borrow" name="borrow.borrowId">
+					<option th:each="borrow : ${borrowedBooks}" th:value="${borrow.borrowId}" th:text="${borrow.book.title + ' - Borrowed on ' + #dates.format(borrow.borrowedDate, 'dd/MM/yyyy')}"></option>
+				</select>
+		</div>
+		<div>
+			<input type="submit" value="Receive Book">
+		</div>
+	</form>
+	<a th:href="@{/librarian-home}">Go back to home page</a>
+</body>
+</html>
+
+
+
+
+
+
+

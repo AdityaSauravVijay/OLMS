@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Issue Book By Request</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+			margin: 0;
+			padding: 0;
+		}
+
+		h2 {
+			color: #444444;
+			margin-top: 30px;
+			margin-bottom: 10px;
+			text-align: center;
+		}
+
+		form {
+			background-color: #ffffff;
+			padding: 20px;
+			margin: auto;
+			margin-top: 30px;
+			max-width: 600px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+			border-radius: 5px;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 10px;
+			color: #444444;
+			font-weight: bold;
+		}
+
+		select,
+		input[type="date"] {
+			border: 1px solid #cccccc;
+			border-radius: 5px;
+			padding: 10px;
+			width: 100%;
+			margin-bottom: 20px;
+		}
+
+		select option:first-child {
+			display: none;
+		}
+
+		input[type="submit"] {
+			background-color: #4CAF50;
+			color: #ffffff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: background-color 0.3s;
+			margin-top: 20px;
+			width: 100%;
+			font-size: 16px;
+			font-weight: bold;
+		}
+
+		input[type="submit"]:hover {
+			background-color: #3e8e41;
+		}
+
+		a {
+			display: block;
+			margin-top: 20px;
+			text-align: center;
+			color: #444444;
+			font-size: 14px;
+			text-decoration: none;
+			border: 1px solid #cccccc;
+			padding: 10px 20px;
+			border-radius: 5px;
+			transition: background-color 0.3s;
+		}
+
+		a:hover {
+			background-color: #f2f2f2;
+		}
+	</style>
+</head>
+<body>
+	<h2>Issue Book By Request</h2>
+	<form th:action="@{/issue-book-by-request}" method="post" th:object="${return}">
+		<div>
+			<label for="borrow">Select Book to Issue:</label>
+			<select id="borrow" name="borrow.borrowId">
+				<option th:each="borrow : ${allBooks}" th:value="${borrow.borrowId}" th:text="${borrow.book.title + ' - Borrowed on ' + #dates.format(borrow.borrowedDate, 'dd/MM/yyyy')}"></option>
+			</select>
+		</div>
+		<div>
+			<label for="dueDate">Due Date:</label>
+			<input id="borrow.dueDate" type="date" name="borrow.dueDate">
+		</div>
+		<div>
+			<input type="submit" value="Issue Book">
+		</div>
+	</form>
+	<a th:href="@{/reader-home}">Go Back to Home Page</a>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Search Books</title>
+	<style>
+		h1 {
+			font-size: 36px;
+			margin-bottom: 30px;
+		}
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-bottom: 30px;
+		}
+		label {
+			font-size: 18px;
+			margin-right: 10px;
+		}
+		input[type="text"] {
+			padding: 5px;
+			font-size: 16px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			margin-bottom: 10px;
+			width: 300px;
+			max-width: 100%;
+		}
+		button[type="submit"] {
+			padding: 10px 20px;
+			font-size: 18px;
+			background-color: #007bff;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+			margin-top: 10px;
+		}
+		button[type="submit"]:hover {
+			background-color: #0062cc;
+		}
+		a {
+			font-size: 16px;
+			color: #007bff;
+			text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+	<h1>Search Books</h1>
+	<form method="post" th:action="@{/search}">
+		<label for="title">Title:</label>
+		<input type="text" id="title" name="title">
+		<label for="author">Author:</label>
+		<input type="text" id="author" name="author">
+		<label for="isbn">ISBN:</label>
+		<input type="text" id="isbn" name="isbn">
+		<button type="submit">Search</button>
+	</form>
+	<a th:href="@{/librarian-home}">Go back to home page</a>
+</body>
+</html>

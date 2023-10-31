@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Online Library Management System</title>
+  <style>
+	  body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+/* Center the container */
+.container {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Style the heading */
+h1 {
+  font-size: 3em;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+}
+
+/* Style the paragraph */
+p {
+  font-size: 1.5em;
+  margin-top: 0;
+}
+
+/* Style the search form */
+form {
+  margin-top: 2em;
+}
+
+input[type="text"] {
+  width: 50%;
+  padding: 0.5em;
+  border: none;
+  border-radius: 3px;
+}
+
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-left: 0.5em;
+}
+
+button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+/* Style the links */
+.links {
+  margin-top: 2em;
+}
+
+a {
+  background-color: #4CAF50;
+  color: white;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 3px;
+  text-decoration: none;
+  margin-right: 1em;
+}
+
+a:hover {
+  background-color: #3e8e41;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to the Online Library Management System</h1>
+    <p>Here you can borrow books, read online, reserve your favorite titles and more!</p>
+    <div class="links">
+      <a href="#" th:href="@{/login}">Log In</a>
+      <a href="#" th:href="@{/registration}">Register</a>
+    </div>
+  </div>
+</body>
+</html>

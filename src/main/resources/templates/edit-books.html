@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Update Book</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+
+		h1 {
+			margin-bottom: 20px;
+			text-align: center;
+		}
+
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 20px;
+		}
+
+		label {
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
+
+		input[type="text"] {
+			padding: 5px;
+			margin-bottom: 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			width: 100%;
+			max-width: 400px;
+			box-sizing: border-box;
+		}
+
+		input[type="submit"] {
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			width: 100%;
+			max-width: 400px;
+			box-sizing: border-box;
+		}
+
+		input[type="submit"]:hover {
+			background-color: #3e8e41;
+		}
+
+		a {
+			display: block;
+			margin-top: 20px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<h1>Update Book</h1>
+	<form th:action="@{/edit/{id}(id=${book.id})}" method="POST">
+		<input type="hidden" name="id" th:value="${book.id}">
+		<label for="title">Title:</label>
+		<input type="text" id="title" name="title" th:value="${book.title}" required>
+		<label for="author">Author:</label>
+		<input type="text" id="author" name="author" th:value="${book.author}" required>
+		<label for="isbn">ISBN:</label>
+		<input type="text" id="isbn" name="isbn" th:value="${book.isbn}" required>
+		<label for="available">Available:</label>
+		<input type="text" id="available" name="available" th:value="${book.available}" required>
+		<input type="submit" value="Update Book">
+	</form>
+	<a th:href="@{/librarian-home}">Go back to home page</a>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search Books</title>
+	<style>
+		h1 {
+			text-align: center;
+			font-size: 32px;
+			margin-top: 50px;
+			margin-bottom: 30px;
+		}
+	table {
+		width: 80%;
+		margin: 0 auto;
+		border-collapse: collapse;
+		margin-bottom: 50px;
+	}
+	
+	th {
+		background-color: #007bff;
+		color: #fff;
+		padding: 10px;
+		text-align: center;
+		border: 1px solid #ccc;
+		font-weight: bold;
+	}
+	
+	td {
+		padding: 10px;
+		border: 1px solid #ccc;
+		text-align: center;
+	}
+	
+	tr:nth-child(even) {
+		background-color: #f2f2f2;
+	}
+	
+	a {
+		display: block;
+		margin: 0 auto;
+		width: 150px;
+		text-align: center;
+		padding: 10px;
+		background-color: #007bff;
+		color: #fff;
+		border-radius: 5px;
+		text-decoration: none;
+		font-size: 18px;
+	}
+	
+	a:hover {
+		background-color: #0062cc;
+	}
+	
+</style>
+</head>
+<body>
+	<h1>Search Book Results</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Author</th>
+				<th>ISBN</th>
+				<th>Available</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="book : ${books}">
+				<td th:text="${book.title}"></td>
+				<td th:text="${book.author}"></td>
+				<td th:text="${book.isbn}"></td>
+				<td th:text="${book.available}"></td>
+			</tr>
+		</tbody>
+	</table>
+	<a th:href="@{/reader-home}">Go back to home page</a>
+</body>
+</html>

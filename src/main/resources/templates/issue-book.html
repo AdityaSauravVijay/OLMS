@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Issue Book</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+		}
+
+		h2 {
+			margin-top: 30px;
+			text-align: center;
+			color: #4CAF50;
+		}
+
+		form {
+			width: 80%;
+			margin: 0 auto;
+			background-color: #fff;
+			padding: 20px;
+			box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+			border-radius: 5px;
+		}
+
+		label {
+			display: inline-block;
+			margin-bottom: 10px;
+			font-weight: bold;
+			color: #555;
+		}
+
+		select, input[type="date"] {
+			padding: 5px;
+			border: none;
+			border-radius: 3px;
+			background-color: #f2f2f2;
+			font-size: 16px;
+			color: #333;
+			margin-bottom: 15px;
+			width: 100%;
+		}
+
+		input[type="submit"] {
+			background-color: #4CAF50;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 3px;
+			font-size: 16px;
+			cursor: pointer;
+			margin-top: 20px;
+			margin-bottom: 10px;
+			transition: all 0.3s ease;
+		}
+
+		input[type="submit"]:hover {
+			background-color: #3e8e41;
+		}
+
+		a {
+			display: block;
+			text-align: center;
+			color: #4CAF50;
+			font-size: 18px;
+			margin-top: 20px;
+		}
+
+	</style>
+</head>
+<body>
+	<h2>Issue Book</h2>
+	<form th:action="@{/issue-book}" th:object="${borrow}" method="post">
+		<label for="user">User:</label>
+		<select id="user" name="user.id">
+			<option th:each="user : ${users}" th:value="${user.id}" th:text="${user.name}">User name</option>
+		</select>
+		<br>
+		<label for="book">Book:</label>
+		<select id="book" name="book.id">
+			<option th:each="book : ${allBooks}" th:value="${book.id}" th:text="${book.title}">Book title</option>
+		</select>
+		<br>
+		<label for="borrowDate">Borrow Date:</label>
+		<input type="date" id="borrowedDate" name="borrowedDate" th:value="${#temporals.format(borrow.borrowedDate, 'yyyy-MM-dd')}"/>
+		<br>
+		<label for="dueDate">Due Date:</label>
+		<input type="date" id="dueDate" name="dueDate" th:value="${#temporals.format(borrow.dueDate, 'yyyy-MM-dd')}"/>
+		<br>
+		<input type="submit" value="Issue Book">
+	</form>
+	<a th:href="@{/librarian-home}">Go back to home page</a>
+</body>
+</html>
